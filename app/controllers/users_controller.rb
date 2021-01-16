@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    puts('* * * Users: Create endpoint hit')
     @user = User.new(user_params)
 
     if @user.save
