@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  monthly_income: 1
+  monthly_bills: 1
+  leftover_money: 1
+  four01k: false
+  four01k_match: 1
+  four01k_contribution: 1
+  credit_card_debt: false
+  single: false
+  singleMax: false
+  singleBetween: false
+  earned_income: false
+  below_50: false
+  below_70_half: false
+  roth_eligable: false
+  roth_max: 1
+  filing_jointly: false
+  married_max: false
+  married_between: false
+  earn_less_than_min: false
+
+two:
+  email: MyString
+  password_digest: MyString
+  monthly_income: 1
+  monthly_bills: 1
+  leftover_money: 1
+  four01k: false
+  four01k_match: 1
+  four01k_contribution: 1
+  credit_card_debt: false
+  single: false
+  singleMax: false
+  singleBetween: false
+  earned_income: false
+  below_50: false
+  below_70_half: false
+  roth_eligable: false
+  roth_max: 1
+  filing_jointly: false
+  married_max: false
+  married_between: false
+  earn_less_than_min: false

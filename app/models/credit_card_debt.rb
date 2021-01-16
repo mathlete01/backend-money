@@ -1,0 +1,3 @@
+class CreditCardDebt < ApplicationRecord
+  
+end
