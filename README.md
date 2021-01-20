@@ -1,5 +1,7 @@
 # README
 
+Yo Matty--Remember to change settings about cors and all that stuff as per here: https://learning.flatironschool.com/courses/1267/assignments/46794?module_item_id=89537
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

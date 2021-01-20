@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_231814) do
+ActiveRecord::Schema.define(version: 2021_01_19_015128) do
 
   create_table "credit_card_debts", force: :cascade do |t|
     t.integer "amount"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 2021_01_14_231814) do
     t.integer "monthly_bills"
     t.integer "leftover_money"
     t.boolean "four01k"
-    t.integer "four01k_match"
-    t.integer "four01k_contribution"
-    t.boolean "credit_card_debt"
+    t.float "four01k_match"
+    t.float "four01k_contribution"
+    t.integer "credit_card_debt"
     t.boolean "single"
     t.boolean "singleMax"
     t.boolean "singleBetween"
