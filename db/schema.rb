@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_182511) do
+ActiveRecord::Schema.define(version: 2021_01_21_060014) do
 
   create_table "credit_card_debts", force: :cascade do |t|
     t.integer "amount"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_182511) do
     t.boolean "earn_less_than_min"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "monthly_spending"
   end
 
   add_foreign_key "credit_card_debts", "users"
