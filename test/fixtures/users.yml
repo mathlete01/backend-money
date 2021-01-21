@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
+  username: MyString
   password_digest: MyString
   monthly_income: 1
   monthly_bills: 1
@@ -24,7 +24,7 @@ one:
   earn_less_than_min: false
 
 two:
-  email: MyString
+  username: MyString
   password_digest: MyString
   monthly_income: 1
   monthly_bills: 1
