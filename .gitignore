@@ -22,3 +22,8 @@
 /config/master.key
 .DS_Store
 .DS_Store
+db/development.sqlite3
+log/development.log
+tmp/cache/bootsnap-compile-cache/0a/5096a424a9b1c9
+tmp/cache/bootsnap-load-path-cache
+tmp/pids/server.pid
