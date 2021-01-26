@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_221532) do
+ActiveRecord::Schema.define(version: 2021_01_26_064835) do
 
   create_table "credit_card_debts", force: :cascade do |t|
     t.integer "amount"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_01_25_221532) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "monthly_spending"
     t.string "current_step"
+    t.boolean "four01k_max_o_out"
   end
 
   add_foreign_key "credit_card_debts", "users"
