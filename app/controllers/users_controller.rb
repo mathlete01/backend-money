@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # def profile
+  #   render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
