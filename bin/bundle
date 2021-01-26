@@ -14,7 +14,7 @@ m = Module.new do
   module_function
 
   def invoked_as_script?
-    File.expand_path($0) == File.expand_path(__FILE__)
+    File.expand_path($0) === File.expand_path(__FILE__)
   end
 
   def env_var_version
@@ -27,7 +27,7 @@ m = Module.new do
     bundler_version = nil
     update_index = nil
     ARGV.each_with_index do |a, i|
-      if update_index && update_index.succ == i && a =~ Gem::Version::ANCHORED_VERSION_PATTERN
+      if update_index && update_index.succ === i && a =~ Gem::Version::ANCHORED_VERSION_PATTERN
         bundler_version = a
       end
       next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/

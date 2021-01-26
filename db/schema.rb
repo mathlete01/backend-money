@@ -59,8 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_064835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "monthly_spending"
-    t.string "current_step"
-    t.boolean "four01k_max_o_out"
+    t.boolean "four01k_max_out"
   end
 
   add_foreign_key "credit_card_debts", "users"
