@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:create, :login]
+  skip_before_action :authorized, only: [:create, :login]
 
 
   # GET /users
@@ -17,11 +17,11 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    puts('* * * Users: Create endpoint hit')
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      token = encode_token({user_id: @user.id})
+      render json: {user:@user,token:token}, status: :created, location: @user
     else
       # byebug
       flash[:danger] = "Looks like we've seen you before. Try signing in instead of signing up"
@@ -55,9 +55,9 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  # def profile
-  #   render json: { user: UserSerializer.new(current_user) }, status: :accepted
-  # end
+  def profile
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
