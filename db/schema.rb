@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2021_01_27_162810) do
     t.integer "monthly_spending"
     t.boolean "four01k_max_out"
     t.string "current_step"
-    t.string "path_str"
     t.integer "cc_1"
     t.integer "cc_2"
     t.integer "cc_3"
