@@ -30,8 +30,8 @@ class UsersController < ApplicationController
   end
 
   def login
-    # byebug
     user = User.find_by(username: params[:user][:username])
+    # byebug
     if user && user.authenticate(params[:user][:password])
       token = encode_token({ user_id: user.id })
       render json: { user: UserSerializer.new(user), token: token }
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    # byebug
     if @user.update(user_params)
       render json: @user
     else
@@ -67,6 +68,6 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:username, :password, :monthly_income, :monthly_bills, :leftover_money, :four01k, :four01k_match, :four01k_contribution, :credit_card_debt, :single, :singleMax, :singleBetween, :earned_income, :below_50, :below_70_half, :roth_eligable, :roth_max, :filing_jointly, :married_max, :married_between, :earn_less_than_min, :monthly_spending, :four01k_max_out)
+    params.require(:user).permit(:username, :password, :monthly_income, :monthly_bills, :leftover_money, :four01k, :four01k_match, :four01k_contribution, :credit_card_debt, :single, :singleMax, :singleBetween, :earned_income, :below_50, :below_70_half, :roth_eligable, :roth_max, :filing_jointly, :married_max, :married_between, :earn_less_than_min, :monthly_spending, :four01k_max_out, :current_step)
   end
 end
