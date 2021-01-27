@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_001247) do
+ActiveRecord::Schema.define(version: 2021_01_27_162810) do
 
   create_table "credit_card_debts", force: :cascade do |t|
     t.integer "amount"
@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 2021_01_27_001247) do
     t.integer "monthly_spending"
     t.boolean "four01k_max_out"
     t.string "current_step"
+    t.string "path_str"
+    t.integer "cc_1"
+    t.integer "cc_2"
+    t.integer "cc_3"
   end
 
   add_foreign_key "credit_card_debts", "users"
