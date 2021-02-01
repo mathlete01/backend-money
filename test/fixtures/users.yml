@@ -11,8 +11,8 @@ one:
   four01k_contribution: 1
   credit_card_debt: false
   single: false
-  singleMax: false
-  singleBetween: false
+  single_max: false
+  single_between: false
   earned_income: false
   below_50: false
   below_70_half: false
@@ -34,8 +34,8 @@ two:
   four01k_contribution: 1
   credit_card_debt: false
   single: false
-  singleMax: false
-  singleBetween: false
+  single_max: false
+  single_between: false
   earned_income: false
   below_50: false
   below_70_half: false

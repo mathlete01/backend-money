@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:create, :login]
-
+  before_action :set_user, only: %i[show update destroy]
+  skip_before_action :authorized, only: %i[create login]
 
   # GET /users
   def index
@@ -17,32 +16,33 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    puts('* * * Users: Create endpoint hit')
     @user = User.new(user_params)
-
+    # byebug
     if @user.save
-      render json: @user, status: :created, location: @user
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }, status: :created, location: @user
     else
       # byebug
-      flash[:danger] = "Looks like we've seen you before. Try signing in instead of signing up"
+      # flash[:danger] = "Looks like we've seen you before. Try signing in instead of signing up"
       redirect_to signup_path
       render json: @user.errors, status: :unprocessable_entity
     end
   end
 
   def login
+    user = User.find_by(username: params[:user][:username])
     # byebug
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
-      token = encode_token({user_id: user.id})
-      render json: {user: UserSerializer.new(user), token: token}
+    if user && user.authenticate(params[:user][:password])
+      token = encode_token({ user_id: user.id })
+      render json: { user: UserSerializer.new(user), token: token }
     else
-      render json: {error: "Incorrect Username or Password"}
+      render json: { error: 'Incorrect Username or Password' }
     end
-  end 
+  end
 
   # PATCH/PUT /users/1
   def update
+    # byebug
     if @user.update(user_params)
       render json: @user
     else
@@ -55,14 +55,19 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def profile
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:username, :password_digest, :monthly_income, :monthly_bills, :leftover_money, :four01k, :four01k_match, :four01k_contribution, :credit_card_debt, :single, :singleMax, :singleBetween, :earned_income, :below_50, :below_70_half, :roth_eligable, :roth_max, :filing_jointly, :married_max, :married_between, :earn_less_than_min, :monthly_spending)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def user_params
+    params.require(:user).permit(:username, :password, :monthly_income, :monthly_bills, :leftover_money, :four01k, :four01k_match, :four01k_contribution, :credit_card_debt, :single, :single_max, :single_between, :earned_income, :below_50, :below_70_half, :roth_eligable, :roth_max, :filing_jointly, :married_max, :married_between, :earn_less_than_min, :monthly_spending, :four01k_max_out, :current_step, :cc_1, :cc_2, :cc_3)
+  end
 end
