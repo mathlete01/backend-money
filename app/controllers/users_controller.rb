@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # has_many :clicks
   before_action :set_user, only: %i[show update destroy]
   skip_before_action :authorized, only: %i[create login]
 

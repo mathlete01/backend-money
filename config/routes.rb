@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :rungs
+  resources :clicks
+  resources :steps
+  resources :rows
   resources :credit_card_debts
   resources :users
   patch "users", to: "users#update"
