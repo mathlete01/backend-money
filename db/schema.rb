@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_224044) do
+ActiveRecord::Schema.define(version: 2021_02_20_214818) do
 
   create_table "clicks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_224044) do
     t.integer "cc_1"
     t.integer "cc_2"
     t.integer "cc_3"
+    t.string "pay_schedule"
   end
 
   add_foreign_key "clicks", "rows", column: "rows_id"
