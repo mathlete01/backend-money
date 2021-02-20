@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RungTest < ActiveSupport::TestCase
+class ClickTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

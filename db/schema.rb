@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_194631) do
+ActiveRecord::Schema.define(version: 2021_02_19_224044) do
+
+  create_table "clicks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "steps_id", null: false
+    t.integer "rows_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rows_id"], name: "index_clicks_on_rows_id"
+    t.index ["steps_id"], name: "index_clicks_on_steps_id"
+    t.index ["user_id"], name: "index_clicks_on_user_id"
+  end
 
   create_table "credit_card_debts", force: :cascade do |t|
     t.integer "amount"
@@ -20,18 +31,54 @@ ActiveRecord::Schema.define(version: 2021_02_01_194631) do
     t.index ["user_id"], name: "index_credit_card_debts_on_user_id"
   end
 
-  create_table "rungs", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.boolean "rung_1"
-    t.boolean "rung_2"
-    t.boolean "rung_3"
-    t.boolean "rung_4"
-    t.boolean "rung_5"
-    t.boolean "rung_6"
-    t.boolean "rung_7"
+  create_table "rows", force: :cascade do |t|
+    t.integer "row_1"
+    t.integer "row_2"
+    t.integer "row_3"
+    t.integer "row_4"
+    t.integer "row_5"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_rungs_on_user_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.integer "intro"
+    t.integer "credit_card_debt"
+    t.integer "credit_card_debt_q"
+    t.integer "done_for_now"
+    t.integer "four01k_contribution"
+    t.integer "four01k_match"
+    t.integer "four01k_max_out_q"
+    t.integer "four01k_q"
+    t.integer "leftover_money"
+    t.integer "no_debt"
+    t.integer "pri_backdoor_roth_intro"
+    t.integer "pri_four01k_max"
+    t.integer "pri_post_debt"
+    t.integer "pri_roth_married_jointly_tween"
+    t.integer "pri_roth_married_not_jointly_tween"
+    t.integer "pri_roth_max"
+    t.integer "pri_roth_reg"
+    t.integer "pri_roth_single_tween"
+    t.integer "pri_taxable_brokerage_intro"
+    t.integer "roth_intro"
+    t.integer "roth_married_jointly_50_q"
+    t.integer "roth_married_jointly_income_q"
+    t.integer "roth_married_jointly_max_q"
+    t.integer "roth_married_jointly_min_q"
+    t.integer "roth_married_jointly_over_d"
+    t.integer "roth_married_jointly_q"
+    t.integer "roth_married_not_jointly_min_q"
+    t.integer "roth_married_not_jointly_over_d"
+    t.integer "roth_single_50_q"
+    t.integer "roth_single_income_q"
+    t.integer "roth_single_max_q"
+    t.integer "roth_single_min_q"
+    t.integer "roth_single_over_d"
+    t.integer "roth_single_q"
+    t.integer "roth_single_under_d"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,6 +113,8 @@ ActiveRecord::Schema.define(version: 2021_02_01_194631) do
     t.integer "cc_3"
   end
 
+  add_foreign_key "clicks", "rows", column: "rows_id"
+  add_foreign_key "clicks", "steps", column: "steps_id"
+  add_foreign_key "clicks", "users"
   add_foreign_key "credit_card_debts", "users"
-  add_foreign_key "rungs", "users"
 end
