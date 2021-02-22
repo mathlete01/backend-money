@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_22_020644) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clicks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "steps_id", null: false
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 2021_02_22_020644) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+    t.text "username"
+    t.text "password_digest"
     t.integer "monthly_income"
     t.integer "monthly_bills"
     t.integer "leftover_money"
@@ -107,11 +110,11 @@ ActiveRecord::Schema.define(version: 2021_02_22_020644) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "monthly_spending"
     t.boolean "four01k_max_out"
-    t.string "current_step"
+    t.text "current_step"
     t.integer "cc_1"
     t.integer "cc_2"
     t.integer "cc_3"
-    t.string "pay_schedule"
+    t.text "pay_schedule"
     t.integer "magi"
   end
 
