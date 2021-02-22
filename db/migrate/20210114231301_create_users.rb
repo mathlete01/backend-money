@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :four01k
       t.integer :four01k_match
       t.integer :four01k_contribution
-      t.boolean :credit_card_debt
+      t.integer :credit_card_debt
       t.boolean :single
       t.boolean :singleMax
       t.boolean :singleBetween
