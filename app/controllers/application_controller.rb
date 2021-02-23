@@ -58,4 +58,9 @@ class ApplicationController < ActionController::API
         render :text => '', :content_type => 'text/plain'
       end
     end
+
+    def cors_preflight_check
+      headers['Access-Control-Max-Age'] = '1728000'
+      render json: {} # Render as you need
+    end
   end
