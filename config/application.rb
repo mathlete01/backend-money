@@ -35,7 +35,7 @@ module ApiMoney
     config.middleware.insert_before 0, Rack::Cors do
       allow do
          origins '*'
-         resource '*', :headers => :any, :methods => [:get, :post, :options]
+         resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete, :options]
        end
     end
     config.api_only = true
