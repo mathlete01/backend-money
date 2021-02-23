@@ -51,11 +51,11 @@ class ApplicationController < ActionController::API
 
     def cors_preflight_check
       if request.method == "OPTIONS"
-        headers['Access-Control-Allow-Origin'] = 'http://localhost'
-        headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+        headers['Access-Control-Allow-Origin'] = '*'
+        headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, PATCH, DELETE'
         headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
         headers['Access-Control-Max-Age'] = '1728000'
-        render json: {}
+        render json: {},status: :accepted
       end
     end
 
