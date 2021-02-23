@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-    before_action :authorized
     before_filter :cors_preflight_check
+    before_action :authorized
     after_filter :cors_set_access_control_headers
   
     def encode_token(payload)
