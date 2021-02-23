@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     
-    before_action :cors_preflight_check ,  :authorized  
+    before_action :cors_preflight_check, :set_headers, :authorized  
     after_action :cors_set_access_control_headers
   
     def encode_token(payload)
@@ -56,6 +56,19 @@ class ApplicationController < ActionController::API
         headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
         headers['Access-Control-Max-Age'] = '1728000'
         render json: {},status: :accepted
+      end
+    end
+
+    def set_headers
+      if request.headers["HTTP_ORIGIN"]
+      # better way check origin
+      # if request.headers["HTTP_ORIGIN"] && /^https?:\/\/(.*)\.some\.site\.com$/i.match(request.headers["HTTP_ORIGIN"])
+        headers['Access-Control-Allow-Origin'] = request.headers["HTTP_ORIGIN"]
+        headers['Access-Control-Expose-Headers'] = 'ETag'
+        headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD'
+        headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match,Auth-User-Token'
+        headers['Access-Control-Max-Age'] = '86400'
+        headers['Access-Control-Allow-Credentials'] = 'true'
       end
     end
 
