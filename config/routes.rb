@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   get "/getuser", to: "users#getuser"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  match '*path', to: 'application#cors_preflight_check', via: [:options]
+  match '*path', to: 'application#cors_preflight_check', via: [:options,:fetch]
+
 end
