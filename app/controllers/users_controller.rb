@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # has_many :clicks
-  before_action :set_user, only: %i[show update destroy]
+  before_action :cors_preflight_check, :set_user, only: %i[show update destroy]
   skip_before_action :authorized, only: %i[create login]
 
   # GET /users
@@ -71,4 +71,16 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :monthly_income, :monthly_bills, :leftover_money, :four01k, :four01k_match, :four01k_contribution, :credit_card_debt, :single, :single_max, :single_between, :earned_income, :below_50, :below_70_half, :roth_eligable, :roth_max, :filing_jointly, :married_max, :married_between, :earn_less_than_min, :monthly_spending, :four01k_max_out, :current_step, :cc_1, :cc_2, :cc_3, :pay_schedule, :magi)
   end
+
+
+  def cors_preflight_check
+    if request.method == "OPTIONS"
+      headers['Access-Control-Allow-Origin'] = 'http://localhost'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
+      headers['Access-Control-Max-Age'] = '1728000'
+      render json: {}
+    end
+  end
 end
+
