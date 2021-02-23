@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
-    before_filter :cors_preflight_check
-    before_action :authorized
-    after_filter :cors_set_access_control_headers
+    
+    before_action :cors_preflight_check ,  :authorized  
+    after_action :cors_set_access_control_headers
   
     def encode_token(payload)
       # should store secret in env variable
@@ -55,12 +55,9 @@ class ApplicationController < ActionController::API
         headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
         headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
         headers['Access-Control-Max-Age'] = '1728000'
-        render :text => '', :content_type => 'text/plain'
+        render json: {}
       end
     end
 
-    def cors_preflight_check
-      headers['Access-Control-Max-Age'] = '1728000'
-      render json: {} # Render as you need
-    end
+   
   end
