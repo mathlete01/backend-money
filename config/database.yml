@@ -3,37 +3,21 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: d2uvhanr1r9dil
-  pool: 5
-  username: rleeishsfqzcxm
-  password: be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9 
-  timeout: 5000
-  port: 5432
-  url: postgres://rleeishsfqzcxm:be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9@ec2-34-230-167-186.compute-1.amazonaws.com:5432/d2uvhanr1r9dil
+  url: 'postgres://rleeishsfqzcxm:be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9@ec2-34-230-167-186.compute-1.amazonaws.com:5432/d2uvhanr1r9dil'
 
- 
- 
 production:
   adapter: postgresql
   encoding: unicode
-  database: d2uvhanr1r9dil
-  pool: 5
-  username: rleeishsfqzcxm
-  password: be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9 
-  timeout: 5000
-  port: 5432
-  url: postgres://rleeishsfqzcxm:be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9@ec2-34-230-167-186.compute-1.amazonaws.com:5432/d2uvhanr1r9dil
- 
-  
-  test:
-    adapter: postgresql
-    encoding: unicode
-    database: money_test
-    pool: 5
-    username: msallin
-    # password:
-    timeout: 5000
+  url: 'postgres://rleeishsfqzcxm:be454d5a075d40c74fad9799b7f964a6930bcc98c6e262219bd02e7fe08810b9@ec2-34-230-167-186.compute-1.amazonaws.com:5432/d2uvhanr1r9dil'
 
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: money_test
+  pool: 5
+  username: msallin
+  # password:
+  timeout: 5000
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
